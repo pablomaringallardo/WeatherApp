@@ -8,60 +8,60 @@
 import Foundation
 
 struct WeatherModel: Codable {
-    let latitude: Double
-    let longitude: Double
-    let timezone: String
-    let timezoneOffset: Int64
-    var current: CurrentWeather
-    
-    enum CodingKeys: String, CodingKey {
-        case latitude = "lat"
-        case longitude = "lon"
-        case timezone
-        case timezoneOffset = "timezone_offset"
-        case current
-    }
-}
-
-struct CurrentWeather: Codable {
-    let date: Int
-    let sunrise: Int
-    let sunset: Int
-    let temperature: Double
-    let feelsLike: Double
-    let pressure: Int
-    let humidity: Int
-    let dewPoint: Double
-    let uvIndex: Double
-    let clouds: Int
-    let visibility: Int
-    let windSpeed: Double
-    let windDegrees: Int
-    let windGust: Double
+    let coord: Coord
     let weather: [Weather]
+    let base: String
+    let main: WeatherConditions
+    let visibility: Int
+    let wind: Wind
+    let clouds: Clouds
+    let dt: Int
+    let sys: Sys
+    let timezone, id: Int
+    let name: String
+    let cod: Int
+}
+
+// MARK: - Clouds
+struct Clouds: Codable {
+    let all: Int
+}
+
+// MARK: - Coord
+struct Coord: Codable {
+    let lon, lat: Double
+}
+
+// MARK: - Main
+struct WeatherConditions: Codable {
+    let temp, feelsLike, tempMin, tempMax: Double
+    let pressure, humidity: Int
 
     enum CodingKeys: String, CodingKey {
-        case date = "dt"
-        case sunrise
-        case sunset
-        case temperature = "temp"
+        case temp
         case feelsLike = "feels_like"
-        case pressure
-        case humidity
-        case dewPoint = "dew_point"
-        case uvIndex = "uvi"
-        case clouds
-        case visibility
-        case windSpeed = "wind_speed"
-        case windDegrees = "wind_deg"
-        case windGust = "wind_gust"
-        case weather
+        case tempMin = "temp_min"
+        case tempMax = "temp_max"
+        case pressure, humidity
     }
 }
 
+// MARK: - Sys
+struct Sys: Codable {
+    let type, id: Int
+    let country: String
+    let sunrise, sunset: Int
+}
+
+// MARK: - Weather
 struct Weather: Codable {
     let id: Int
-    let main: String
-    let description: String
-    let icon: String
+    let main, description, icon: String
+}
+
+// MARK: - Wind
+struct Wind: Codable {
+    let speed: Double
+    let deg: Int
+    let gust: Double
 }

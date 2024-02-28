@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol PrincipalViewInteractorProtocol: AnyObject {
-    func fetchWeather(latitude: Double, longitude: Double) -> AnyPublisher<WeatherModel, Error>
+    func fetchWeather(country: String) -> AnyPublisher<WeatherModel, Error>
 }
 
 final class PrincipalViewInteractor: PrincipalViewInteractorProtocol {
@@ -17,9 +17,9 @@ final class PrincipalViewInteractor: PrincipalViewInteractorProtocol {
     let networker = Networker()
     let networkManager = NetworkManager()
     
-    func fetchWeather(latitude: Double, longitude: Double) -> AnyPublisher<WeatherModel, Error> {
+    func fetchWeather(country: String) -> AnyPublisher<WeatherModel, Error> {
         
-        let endpoint = "?lat=\(latitude)&lon=\(longitude)&appid=\(apiKEY)"
+        let endpoint = "data/2.5/weather?q=\(country)&APPID=\(apiKEY)"
         
         return networker.callServer(type: WeatherModel.self, request: networkManager.getSession(endpoint: endpoint)!)
     }

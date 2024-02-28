@@ -9,28 +9,28 @@ import Foundation
 import Combine
 
 final class PrincipalViewModel: ObservableObject {
-    @Published var weatherLocation: WeatherModel
+    @Published var weatherLocation: WeatherModel?
     
     var suscriptors = Set<AnyCancellable>()
-    var interactor: PrincipalViewInteractor
+    var interactor: PrincipalViewInteractorProtocol
     
-    init(weatherLocation: WeatherModel, interactor: PrincipalViewInteractor) {
-        self.weatherLocation = weatherLocation
+    init(interactor: PrincipalViewInteractorProtocol = PrincipalViewInteractor()) {
         self.interactor = interactor
     }
     
-    func fetchWeather(latitude: Double, longitude: Double) {
+    func fetchWeather(country: String) {
         
-        interactor.fetchWeather(latitude: latitude, longitude: longitude)
+        interactor.fetchWeather(country: country)
             .sink { completion in
                 switch completion {
                 case .finished:
                     print("SUCCESS")
                 case .failure(let error):
-                    print("ERROR")
+                    print("ERROR \(error.localizedDescription)")
                 }
             } receiveValue: { response in
                 self.weatherLocation = response
+                print(self.weatherLocation ?? "")
             }
             .store(in: &suscriptors)
 
