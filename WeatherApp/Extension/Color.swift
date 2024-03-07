@@ -39,6 +39,12 @@ extension Color {
         endPoint: .bottomTrailing
     )
     
+    static let pruebaColor = LinearGradient(
+        gradient: Gradient(colors: [Color(hex: "FF0000"), Color(hex: "FFA500"), Color(hex: "FFFF00")]),
+        startPoint: .top,
+        endPoint: .bottom
+    )
+    
     static let bgTextNight = Color(hex: "001026")
     static let bgTextDay = Color(hex: "104084")
 }

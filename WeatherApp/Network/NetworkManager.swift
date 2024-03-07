@@ -15,7 +15,7 @@ struct NetworkManager {
     
     func getSession(endpoint: String) -> URLRequest? {
         
-        var urlComponents = URLComponents(string: "\(baseURL)\(endpoint)")
+        let urlComponents = URLComponents(string: "\(baseURL)\(endpoint)")
         
         guard let url = urlComponents?.url else { return nil }
         

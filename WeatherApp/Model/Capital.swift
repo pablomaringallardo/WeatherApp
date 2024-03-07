@@ -1,5 +1,5 @@
 //
-//  CapitalModel.swift
+//  Capital.swift
 //  WeatherApp
 //
 //  Created by Pablo Marín Gallardo on 29/2/24.
