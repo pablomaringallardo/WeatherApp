@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+let hola = "Hola"
 let baseURL = "https://api.openweathermap.org/"
 
 let apiKEY = "82ed1279a23c5e39a0598f136e6be04a"
