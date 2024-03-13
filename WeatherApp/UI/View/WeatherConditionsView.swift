@@ -21,7 +21,7 @@ struct WeatherConditionsView: View {
                         HStack {
                             Image(systemName: "eye.fill")
                             if let visibility {
-                                Text("\(Int(visibility).formatted(.percent))")
+                                Text("\(Int(visibility))km")
                             } else {
                                 Text("--")
                             }

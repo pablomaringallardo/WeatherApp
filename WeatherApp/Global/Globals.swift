@@ -26,25 +26,21 @@ let capitals = [
 func iconWeather(code: String) -> String {
     switch code {
     case "01d":
-        return "sun.max.fill"
+        return "☀️"
     case "02d", "02n":
-        return "cloud.sun.fill"
-    case "03d", "03n":
-        return "cloud.fill"
-    case "04d", "04n":
-        return "cloud.fill"
+        return "⛅️"
+    case "03d", "03n", "04d", "04n", "50d", "50n":
+        return "☁️"
     case "09d", "09n":
-        return "cloud.rain.fill"
+        return "🌧️"
     case "10d", "10n":
-        return "cloud.sun.rain.fill"
+        return "🌦️"
     case "11d", "11n":
-        return "cloud.bolt.fill"
+        return "🌩️"
     case "13d", "13n":
-        return "cloud.snow.fill"
-    case "50d", "50n":
-        return "cloud.fog.fill"
+        return "🌨️"
     case "01n":
-        return "moon.fill"
+        return "🌙"
     default:
         return "questionmark.circle"
     }

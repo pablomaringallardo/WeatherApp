@@ -17,8 +17,9 @@ struct TimePerHourCell: View {
                 Text("\(temp)°C")
                     .font(.system(size: 18))
                     
-                Image(systemName: iconWeather(code: icon))
-                    .font(.title)
+                Text("\(iconWeather(code: icon))")
+                    .font(.largeTitle)
+                
                 Text(hour)
                     .font(.system(size: 18))
             }

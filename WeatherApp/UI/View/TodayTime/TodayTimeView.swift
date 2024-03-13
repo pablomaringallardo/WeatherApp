@@ -33,6 +33,7 @@ struct TodayTimeView: View {
                         .padding(.top)
                         .bold()
                         
+                        Divider()
                         
                         HStack {
                             TimePerHourCell(
